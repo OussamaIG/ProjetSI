@@ -1,0 +1,146 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/gestionaire.css' %}">
+</head>
+
+<body>
+    <div class="container">
+        {% include 'side_bar.html' %}
+        <div class="main">
+            <div class="cardholder">
+                <div class="card add">
+                    <div class="header">
+                        <ion-icon name="add-outline" class="icon"></ion-icon>
+                        <h2>Insertion</h2>
+                        <ion-icon name="chevron-down-circle-outline" class="more"></ion-icon>
+                    </div>
+                    <div class="body add">
+                        <a href="\ajouter-etudiant">
+                            <div class="cards etudiant">
+                                <span class="icon"><ion-icon name="person-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Etudiant</h3>
+                            </div>
+                        </a>
+                        <a href="\ajouter-groupe">
+                            <div class="cards groupe">
+                                <span class="icon"><ion-icon name="people-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Groupe</h3>
+                            </div>
+                        </a>
+                        <a href="\ajouter-encadreur">
+                            <div class="cards encadreur">
+                                <span class="icon"><ion-icon name="person-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Encadreur</h3>
+                            </div>
+                        </a>
+                        <a href="\ajouter-promoteur">
+                            <div class="cards promoteur">
+                                <span class="icon"><ion-icon name="person-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Promoteur</h3>
+                            </div>
+                        </a>
+                        <a href="\ajouter-stage">
+                            <div class="cards stage">
+                                <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
+                                <h3>Stage</h3>
+                            </div>
+                        </a>
+                        <a href="\ajouter-entreprise">
+                            <div class="cards entreprise">
+                                <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
+                                <h3>entreprise</h3>
+                            </div>
+                        </a>
+                        <div class="cards empty">
+                        </div>
+                        <a href="\ajouter-fiche-evaluation">
+                            <div class="cards note">
+                                <span class="icon"><ion-icon name="newspaper-outline" class="profile"></ion-icon></span>
+                                <h3>Fiche</h3>
+                            </div>
+                        </a>
+
+                        <div class="cards empty"></div>
+                    </div>
+                </div>
+                <div class="card modify">
+                    <div class="header">
+                        <ion-icon name="eye-outline" class="icon"></ion-icon>
+                        <h2>Consultation</h2>
+                        <ion-icon name="chevron-down-circle-outline" class="more2"></ion-icon>
+                    </div>
+                    <div class="body modify">
+                        <a href="\etudiants">
+                            <div class="cards etudiant">
+                                <span class="icon"><ion-icon name="person-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Etudiant</h3>
+                            </div>
+                        </a>
+                        <a href="\groupes">
+                            <div class="cards groupe">
+                                <span class="icon"><ion-icon name="people-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Groupe</h3>
+                            </div>
+                        </a>
+                        <a href="\encadreurs">
+                            <div class="cards encadreur">
+                                <span class="icon"><ion-icon name="person-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Encadreur</h3>
+                            </div>
+                        </a>
+                        <a href="\promoteurs">
+                            <div class="cards promoteur">
+                                <span class="icon"><ion-icon name="person-circle-outline" class="profile"></ion-icon></span>
+                                <h3>Promoteur</h3>
+                            </div>
+                        </a>
+                        <a href="\stages">
+                            <div class="cards stage">
+                                <span class="icon"><ion-icon name="document-text-outline"></ion-icon></span>
+                                <h3>Stage</h3>
+                            </div>
+                        </a>
+                        <a href="\entreprises">
+                            <div class="cards entreprise">
+                                <span class="icon"><ion-icon name="business-outline"></ion-icon></span>
+                                <h3>entreprise</h3>
+                            </div>
+                        </a>
+                        <div class="cards empty">
+                        </div>
+                        <a href="{% url 'fiches-evaluation-list'%}">
+                            <div class="cards note">
+                                <span class="icon"><ion-icon name="newspaper-outline" class="profile"></ion-icon></span>
+                                <h3>Fiche</h3>
+                            </div>
+                        </a>
+                        <div class="cards empty"></div>
+                    </div>
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+    <script src="{% static 'js/gestionaire.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/profilepage.css' %}">
+    <title>{{stage.nom}} {{stage.prenom}}</title>
+</head>
+
+<body>
+    <div class="container">
+        {% include 'side_bar.html' %}
+        <div class="main">
+            <div class="profile">
+                <table>
+                    <thead>
+                        <td>Intitule</td>
+                        <td>Duree</td>
+                        <td>Palier</td>
+                        <td>Fourni_par</td>
+                        <td>Encadreur</td>
+                        <td>Promoteur</td>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>{{stage.intitule}}</td>
+                            <td>{{stage.duree}}</td>
+                            <td>{{stage.palier}}</td>
+                            <td>{{stage.fourni_par}}</td>
+                            <td>{{stage.groupe.encadreur}}</td>
+                            <td>{{stage.groupe.promoteur}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="buttons">
+                <a href="{% url 'update-stage' stage.id %}"><div class="button modify">Modify</div></a>
+                <a href="{% url 'delete-stage' stage.id %}"><div class="button delete">Delete</div></a>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="{% static 'js/index.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

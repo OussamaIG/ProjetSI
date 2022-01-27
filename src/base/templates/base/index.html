@@ -1,0 +1,287 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/index.css' %}">
+</head>
+
+<body>
+    <div class="container">
+       {% include 'side_bar.html' %}
+        <div class="main">
+        <div class="cardBox">
+            <a href = "{% url 'etudiants-list' %}">
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{etudiants.count}}</div>
+                        <div class="carName">Etudiants</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="people-outline"></ion-icon>
+                    </div>
+                </div>
+            </a>
+
+            <a href = "{% url 'encadreurs-list' %}">
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{promoteurs.count}}</div>
+                        <div class="carName">Membre</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="person-outline"></ion-icon>
+                    </div>
+                </div>
+            </a>
+            <a href = "{% url 'stages-list' %}">
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{stages.count}}</div>
+                        <div class="carName">Stage</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="document-outline"></ion-icon>
+                    </div>
+                </div>
+            </a>
+            <a href = "{% url 'entreprises-list' %}">
+                <div class="card">
+                    <div>
+                        <div class="numbers">{{entreprises.count}}</div>
+                        <div class="carName">Entreprise</div>
+                    </div>
+                    <div class="iconBx">
+                        <ion-icon name="business-outline"></ion-icon>
+                    </div>
+                </div>
+            </a>
+
+        </div>
+
+
+            <div class="graphBox">
+                <div class="box">
+                    <canvas id="myChart"></canvas>
+                </div>
+                <div class="box">
+                    <canvas id="myChart2"></canvas>
+                </div>
+            </div>
+
+            <div class="second_graphBox">
+                <div class="box">
+                    <canvas id="myChart3"></canvas>
+                </div>
+                <div class="box">
+                    <canvas id="myChart4"></canvas>
+                </div>
+            </div>
+
+
+
+            <div class="details">       
+                <div class="stages">
+                    <h2>Nos stages :</h2>
+                    <table>
+                        <thead>
+                            <td>Nom</td>
+                            <td>Durée</td>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Ouvrier</td>
+                                <td>2 semaines</td>
+                            </tr>
+                            <tr>
+                                <td>Technique de courte durée</td>
+                                <td>8 semaines</td>
+                            </tr>
+                            <tr>
+                                <td>PFE</td>
+                                <td>Une année</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0/dist/chart.min.js"></script>
+    <script src="{% static 'js/index.js' %}"></script>
+    <script>
+        const ctx = document.getElementById('myChart').getContext('2d');
+        const myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: {{labels|safe}},
+                datasets: [{
+                    label: '# of Votes',
+                    data: {{data|safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 206, 86)',
+                        'rgba(75, 192, 192)',
+                        'rgba(153, 102, 255)',
+                        'rgba(255, 159, 64)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx2 = document.getElementById('myChart2').getContext('2d');
+        const myChart2 = new Chart(ctx2, {
+            type: 'bar',
+            data: {
+                labels: {{third_label|safe}},
+                datasets: [{
+                    label: 'nombre de stagiaires par entreprise',
+                    data: {{third_data|safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 206, 86)',
+                        'rgba(75, 192, 192)',
+                        'rgba(153, 102, 255)',
+                        'rgba(255, 159, 64)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        const ctx3 = document.getElementById('myChart3').getContext('2d');
+        const myChart3 = new Chart(ctx3, {
+            type: 'bar',
+            data: {
+                labels: {{second_labels|safe}},
+                datasets: [{
+                    label: 'nombre de PFE par entreprise',
+                    data: {{second_data|safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132)',
+                        'rgba(54, 162, 235)',
+                        'rgba(255, 206, 86)',
+                        'rgba(75, 192, 192)',
+                        'rgba(153, 102, 255)',
+                        'rgba(255, 159, 64)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }); 
+
+        const ctx4 = document.getElementById('myChart4').getContext('2d');
+        const myChart4 = new Chart(ctx4, {
+            type: 'line',
+            data: {
+                labels: {{fourth_labels|safe}},
+                datasets: [{
+                    label: 'Taux d évolution du nombre d organismes ayant reçus des stagiaires PFE',
+                    data: {{fourth_data|safe}},
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+    </script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

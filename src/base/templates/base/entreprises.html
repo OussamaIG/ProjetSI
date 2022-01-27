@@ -1,0 +1,52 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/listeentreprise.css' %}">
+    <title>Statistique</title>
+</head>
+
+<body>
+    <div class="container">
+        {% include 'side_bar.html' %}
+        <div class="main">
+            <div class="topbar">
+                <div class="toggle">
+                    <ion-icon name="menu-outline"></ion-icon>
+                </div>
+                <div class="search">
+                    <form action="{% url 'etudiants-list' %}" method="GET">
+                        <label>
+                           <input type="text" name="q" placeholder="Search...">
+                           <a href=""><ion-icon name="search-outline"></ion-icon></a>
+                      </label>
+                    </form>
+                </div>
+            </div>
+            <div class="title">
+                <h1>Entreprises :</h1>
+            </div>
+            <div class="yearsbox">
+                {% for entreprise in entreprises %}
+                <a href="{% url 'entreprise-profile' entreprise.id %}">
+                    <div class="card">
+                        <h2>{{entreprise.nom}}</h2>
+                    </div>
+                </a>
+            <br> {% endfor %}
+            </div>
+        </div>
+    </div>
+   
+
+
+    <script src="{% static 'js/index.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>

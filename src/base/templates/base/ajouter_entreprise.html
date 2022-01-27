@@ -1,0 +1,41 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="{% static 'styles/entreprise.css' %}">
+    <title>Document</title>
+</head>
+
+<body>
+
+    {% include 'side_bar.html' %}
+    <div class="main">
+
+        <div class="info">
+            <div class="boxprofile">
+                <div class="header stage">
+                    <ion-icon name="storefront-outline" class='icon'></ion-icon>
+                    <h2>Entreprise</h2>
+                </div>
+                <div class="infomations">
+                    <form action="" method="post">
+                        {% csrf_token %} {{form.as_p}}
+                        <input type="submit" value="submit" class="submit">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="{% static 'js/ajouter_etudiant.js' %}"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+</body>
+
+</html>
